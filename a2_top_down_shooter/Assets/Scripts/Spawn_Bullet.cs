@@ -19,6 +19,7 @@ public class Spawn_Bullet : MonoBehaviour {
 		{
 			print ("Fire");
 			spawned_bullet = Instantiate(bullet_prefab, transform.position, transform.rotation) as GameObject;
+			spawned_bullet.transform.eulerAngles = new Vector3(0, 0, -150);
 			spawned_bullet.GetComponent<Rigidbody2D>().AddRelativeForce(new Vector2(750, 0));
 		}
 	
