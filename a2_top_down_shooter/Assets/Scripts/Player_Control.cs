@@ -7,7 +7,6 @@ public class Player_Control : MonoBehaviour {
 	public float rotation_speed;
 	
 	Transform trans;
-	Vector3 pos;
 	Vector3 rot;
 	float angle;
 	Rigidbody2D r_body;
@@ -20,7 +19,6 @@ public class Player_Control : MonoBehaviour {
 	void Start ()
 	{
 		trans = transform;
-		pos = trans.position;
 		rot = trans.rotation.eulerAngles;
 		feet_animator = feet.GetComponent<Animator>();
 		r_body = gameObject.GetComponent<Rigidbody2D>();
@@ -45,16 +43,12 @@ public class Player_Control : MonoBehaviour {
 		{
 			r_body.AddForce(new Vector2(Mathf.Cos (angle) * speed, 0));
 			r_body.AddForce(new Vector2(0, Mathf.Sin (angle) * speed));
-			//pos.x += (Mathf.Cos (angle) * speed) * Time.deltaTime;
-			//pos.y += (Mathf.Sin (angle) * speed) * Time.deltaTime;
 			feet_animator.SetBool("walking", true);
 		}
 		else if (Input.GetKey (KeyCode.DownArrow))
 		{
 			r_body.AddForce(new Vector2(-1f * (Mathf.Cos (angle) * speed), 0));
 			r_body.AddForce(new Vector2(0, -1f * (Mathf.Sin (angle) * speed)));
-			//pos.x -= (Mathf.Cos (angle) * speed) * Time.deltaTime;
-			//pos.y -= (Mathf.Sin (angle) * speed) * Time.deltaTime;
 			feet_animator.SetBool("walking", true);
 		}
 		else
@@ -64,5 +58,13 @@ public class Player_Control : MonoBehaviour {
 		
 		//update
 		trans.rotation = Quaternion.Euler (rot);
+	}
+
+	void OnCollisionEnter2D(Collision2D col)
+	{
+		if (col.gameObject.tag == "Zombie")
+		{
+			Destroy(gameObject);
+		}
 	}
 }

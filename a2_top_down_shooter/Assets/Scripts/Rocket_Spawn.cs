@@ -21,7 +21,6 @@ public class Rocket_Spawn : MonoBehaviour {
 		{
 			spawned_rocket = Instantiate(rocket_prefab, transform.position, transform.rotation) as GameObject;
 			spawned_rocket.GetComponent<Rigidbody2D>().AddRelativeForce(new Vector2(350, 0));
-			//spawned_rocket.transform.forward = spawned_rocket.GetComponent<Rigidbody2D>().velocity;
 
 			//Wait 1 sec until we allow the player to fire again.
 			wait_to_fire = true;

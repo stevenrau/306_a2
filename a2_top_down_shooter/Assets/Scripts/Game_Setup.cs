@@ -46,16 +46,9 @@ public class Game_Setup : MonoBehaviour {
 		int max_x_pos = (int)Mathf.Ceil(right_screen_cam_border) - 1;
 		int min_y_pos = (int)Mathf.Floor(bottom_screen_cam_border) + 1;
 		int max_y_pos = (int)Mathf.Ceil(top_screen_cam_border);
-		//Build_Background(min_x_pos, max_x_pos, min_y_pos, max_y_pos);
 
 		//Build the border for the playable area. move one tile in from camera limit
-		/*min_x_pos += 1;
-		max_x_pos -= 1;
-		min_y_pos += 1;
-		max_y_pos -= 1;*/
 		Build_Brick_Border(min_x_pos, max_x_pos, min_y_pos, max_y_pos);
-
-		//Build_Edge_Colliders(min_x_pos, max_x_pos, min_y_pos, max_y_pos);
 
 		//Build the grass for the playable area. move one tile in from the brick border
 		min_x_pos += 1;

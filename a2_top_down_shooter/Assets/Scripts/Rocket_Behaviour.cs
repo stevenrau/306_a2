@@ -22,9 +22,15 @@ public class Rocket_Behaviour : MonoBehaviour {
 		{
 			//On a collision, stop the rocket and play explosion animation
 			gameObject.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+			gameObject.GetComponent<BoxCollider2D>().enabled = false;
 			anim.SetTrigger("explode");
 
 			Invoke("Destroy_Rocket", 1);
+		}
+
+		if (other.tag == "Zombie")
+		{
+			Destroy(other.gameObject);
 		}
 	}
 
