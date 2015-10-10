@@ -6,6 +6,11 @@ public class Game_Setup : MonoBehaviour {
 	//The player (more specifically, the player script)
 	public Player_Control player;
 
+	//The four zombie spawn points
+	private const int num_zombie_spawns = 4;
+	public GameObject zombie_spawn_prefab;
+	GameObject[] zombie_spawns;
+
 	// The camera border
 	private float top_screen_cam_border;
 	private float left_screen_cam_border;
@@ -59,6 +64,18 @@ public class Game_Setup : MonoBehaviour {
 
 		//Instantiate the player in the centre of the screen
 		Instantiate(player, Vector3.zero, Quaternion.identity);
+
+		//Instantiate the four zombie spawn locations. Save them in the spawn array
+		Vector3[] spawn_locations = { new Vector3(min_x_pos+1, max_y_pos-1, 0),
+			                          new Vector3(max_x_pos, max_y_pos-1, 0),
+			                          new Vector3(min_x_pos+1, min_y_pos, 0),
+			                          new Vector3(max_x_pos, min_y_pos, 0)};
+		zombie_spawns = new GameObject[num_zombie_spawns];
+		for (int i = 0; i < num_zombie_spawns; i++)
+		{
+			GameObject cur_spawn = Instantiate(zombie_spawn_prefab, spawn_locations[i], Quaternion.identity) as GameObject;
+			zombie_spawns[i] = cur_spawn;
+		}
 	}
 
 	/* Get the X and Y coordinates for the camera's border.
