@@ -3,6 +3,9 @@ using System.Collections;
 
 public class Game_Setup : MonoBehaviour {
 
+	//The player (more specifically, the player script)
+	public Player_Control player;
+
 	// The camera border
 	private float top_screen_cam_border;
 	private float left_screen_cam_border;
@@ -43,14 +46,16 @@ public class Game_Setup : MonoBehaviour {
 		int max_x_pos = (int)Mathf.Ceil(right_screen_cam_border) - 1;
 		int min_y_pos = (int)Mathf.Floor(bottom_screen_cam_border) + 1;
 		int max_y_pos = (int)Mathf.Ceil(top_screen_cam_border);
-		Build_Background(min_x_pos, max_x_pos, min_y_pos, max_y_pos);
+		//Build_Background(min_x_pos, max_x_pos, min_y_pos, max_y_pos);
 
 		//Build the border for the playable area. move one tile in from camera limit
-		min_x_pos += 1;
+		/*min_x_pos += 1;
 		max_x_pos -= 1;
 		min_y_pos += 1;
-		max_y_pos -= 1;
+		max_y_pos -= 1;*/
 		Build_Brick_Border(min_x_pos, max_x_pos, min_y_pos, max_y_pos);
+
+		//Build_Edge_Colliders(min_x_pos, max_x_pos, min_y_pos, max_y_pos);
 
 		//Build the grass for the playable area. move one tile in from the brick border
 		min_x_pos += 1;
@@ -58,6 +63,9 @@ public class Game_Setup : MonoBehaviour {
 		min_y_pos += 1;
 		max_y_pos -= 1;
 		Build_Ground(min_x_pos, max_x_pos, min_y_pos, max_y_pos);
+
+		//Instantiate the player in the centre of the screen
+		Instantiate(player, Vector3.zero, Quaternion.identity);
 	}
 
 	/* Get the X and Y coordinates for the camera's border.
@@ -73,6 +81,11 @@ public class Game_Setup : MonoBehaviour {
 		left_screen_cam_border = -1f * right_screen_cam_border;
 	}
 
+
+	/**
+	 * Fills the bacground with the background tile.
+	 * This might not be used if the brick border extends to the edges of the camera
+	 */
 	void Build_Background(int min_x_pos, int max_x_pos, int min_y_pos, int max_y_pos)
 	{
 		//Build the background using the stone tiles
@@ -85,6 +98,10 @@ public class Game_Setup : MonoBehaviour {
 		}
 	}
 
+	/*
+	 * Builds a brick border to signify the playing area.
+	 * Edge colliders will be built to disallow the player from leaving the bordered area
+	 */
 	void Build_Brick_Border(int min_x_pos, int max_x_pos, int min_y_pos, int max_y_pos)
 	{
 		//Build the background using the stone tiles
@@ -128,6 +145,9 @@ public class Game_Setup : MonoBehaviour {
 		}
 	}
 
+	/*
+	 * Builds the ground inside the bordered area with the ground tiles
+	 */
 	void Build_Ground(int min_x_pos, int max_x_pos, int min_y_pos, int max_y_pos)
 	{
 		//Build the ground using the grass tiles
@@ -173,5 +193,20 @@ public class Game_Setup : MonoBehaviour {
 				}
 			}
 		}
+	}
+
+	/*
+	 * Builds edge colliders along the inside border of the tiles lying along the
+	 * min/max x/y positions provided
+	 */
+	void Build_Edge_Colliders(int min_x_pos, int max_x_pos, int min_y_pos, int max_y_pos)
+	{
+		EdgeCollider2D edge = gameObject.AddComponent<EdgeCollider2D>();
+
+		edge.points = new Vector2[]
+		{
+			new Vector2(-5, 0),
+			new Vector2(5, 0)
+		};
 	}
 }
