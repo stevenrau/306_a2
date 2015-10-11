@@ -76,6 +76,7 @@ public class Game_Setup : MonoBehaviour {
 			GameObject cur_spawn = Instantiate(zombie_spawn_prefab, spawn_locations[i], Quaternion.identity) as GameObject;
 			zombie_spawns[i] = cur_spawn;
 		}
+		Spawn_Random_Zombie();
 	}
 
 	/* Get the X and Y coordinates for the camera's border.
@@ -218,5 +219,18 @@ public class Game_Setup : MonoBehaviour {
 			new Vector2(-5, 0),
 			new Vector2(5, 0)
 		};
+	}
+
+	void Spawn_Random_Zombie()
+	{
+		//Pick one of the four zombie spawn points
+		int spawn_num = Random.Range(0, num_zombie_spawns);
+
+		//Acces the Zombie spawn script and call the function to spawn the zombie
+		Zombie_Spawn spawn_pt = (Zombie_Spawn)zombie_spawns[spawn_num].gameObject.GetComponent("Zombie_Spawn");
+		spawn_pt.Spawn_Zombie();
+
+		//Call again in 5 seconds
+		Invoke("Spawn_Random_Zombie", 5);
 	}
 }

@@ -64,7 +64,13 @@ public class Player_Control : MonoBehaviour {
 	{
 		if (col.gameObject.tag == "Zombie")
 		{
+			//Destroy the player
 			Destroy(gameObject);
+
+			//Destroy all remaining enemies
+
+			//Reload the level
+			Application.LoadLevel (0);
 		}
 	}
 }
