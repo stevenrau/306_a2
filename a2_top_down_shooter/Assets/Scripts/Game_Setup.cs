@@ -3,6 +3,10 @@ using System.Collections;
 
 public class Game_Setup : MonoBehaviour {
 
+	//The kills score
+	//public GUIText score_text;
+	//int score;
+
 	//The player (more specifically, the player script)
 	public Player_Control player;
 
@@ -37,11 +41,9 @@ public class Game_Setup : MonoBehaviour {
 	public GameObject ground_bottom_middle;
 	public GameObject ground_middle;
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-
+	/*
+	 * Use to set up the game world
+	 */
 	void Awake()
 	{
 		Get_Screen_Cam_Borders();
@@ -79,8 +81,19 @@ public class Game_Setup : MonoBehaviour {
 		Spawn_Random_Zombie();
 	}
 
-	/* Get the X and Y coordinates for the camera's border.
-	 * These will be used to build the arena using the full screen real estate */
+	/*
+	 * Use this for initialization
+	 */
+	void Start ()
+	{
+		//score = 0;
+		//Update_Score();
+	}
+
+	/* 
+	 * Get the X and Y coordinates for the camera's border.
+	 * These will be used to build the arena using the full screen real estate 
+	 */
 	void Get_Screen_Cam_Borders()
 	{
 		//Camera's orthographic size is 1/2 total screen height
@@ -221,6 +234,9 @@ public class Game_Setup : MonoBehaviour {
 		};
 	}
 
+	/*
+	 * Spawns a zombie at one of the four spawn points
+	 */
 	void Spawn_Random_Zombie()
 	{
 		//Pick one of the four zombie spawn points
@@ -233,4 +249,15 @@ public class Game_Setup : MonoBehaviour {
 		//Call again in 5 seconds
 		Invoke("Spawn_Random_Zombie", 5);
 	}
+
+	/*public void Increment_Score()
+	{
+		score++;
+		Update_Score();
+	}
+
+	void Update_Score()
+	{
+		score_text.text = "Kills: " + score;
+	}*/
 }

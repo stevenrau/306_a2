@@ -49,6 +49,7 @@
      <Compile Include="Assets\Scripts\Player_Control.cs" />
      <Compile Include="Assets\Scripts\Rocket_Behaviour.cs" />
      <Compile Include="Assets\Scripts\Rocket_Spawn.cs" />
+     <Compile Include="Assets\Scripts\Score_Text.cs" />
      <Compile Include="Assets\Scripts\Spawn_Bullet.cs" />
      <Compile Include="Assets\Scripts\Square_Controls.cs" />
      <Compile Include="Assets\Scripts\Zombie_Bahaviour.cs" />

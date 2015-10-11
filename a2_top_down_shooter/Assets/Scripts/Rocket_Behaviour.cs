@@ -2,18 +2,22 @@
 using System.Collections;
 
 public class Rocket_Behaviour : MonoBehaviour {
-	
+
+	AudioSource audio_source;
 	Animator anim;
+	Score_Text score_text;
 
 	// Use this for initialization
 	void Start ()
 	{
+		audio_source = gameObject.GetComponent<AudioSource>();
 		anim = gameObject.GetComponent<Animator>();
-	}
-	
-	// Update is called once per frame
-	void Update ()
-	{
+
+		GameObject score_text_object = GameObject.FindWithTag("Score");
+		if (score_text_object != null)
+		{
+			score_text = score_text_object.GetComponent<Score_Text>();
+		}
 	}
 
 	void OnTriggerEnter2D(Collider2D other)
@@ -26,11 +30,19 @@ public class Rocket_Behaviour : MonoBehaviour {
 			anim.SetTrigger("explode");
 
 			Invoke("Destroy_Rocket", 1);
+
+			//Play the rocket fire sound clip
+			audio_source.PlayOneShot(audio_source.clip);
 		}
 
 		if (other.tag == "Zombie")
 		{
-			Destroy(other.gameObject);
+			//Call the zombie's die function
+			Zombie_Bahaviour zombie_script = other.gameObject.GetComponent<Zombie_Bahaviour>();
+			zombie_script.Die();
+
+			score_text.Increment_Score();
+
 		}
 	}
 

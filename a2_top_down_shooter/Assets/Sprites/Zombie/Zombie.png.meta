@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 090c4c141505eb041afe2e0559f63e6d
-timeCreated: 1444505294
+timeCreated: 1444546763
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -61,28 +61,28 @@ TextureImporter:
     - name: Zombie_0
       rect:
         serializedVersion: 2
-        x: 3
-        y: 4
-        width: 41
-        height: 38
+        x: 7
+        y: 347
+        width: 39
+        height: 40
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Zombie_1
       rect:
         serializedVersion: 2
-        x: 54
-        y: 4
+        x: 6
+        y: 300
         width: 40
-        height: 39
+        height: 40
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Zombie_2
       rect:
         serializedVersion: 2
-        x: 105
-        y: 3
+        x: 8
+        y: 254
         width: 39
         height: 40
       alignment: 0
@@ -91,28 +91,28 @@ TextureImporter:
     - name: Zombie_3
       rect:
         serializedVersion: 2
-        x: 156
-        y: 5
-        width: 40
-        height: 39
+        x: 7
+        y: 208
+        width: 38
+        height: 41
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Zombie_4
       rect:
         serializedVersion: 2
-        x: 205
-        y: 6
-        width: 41
-        height: 38
+        x: 6
+        y: 163
+        width: 39
+        height: 40
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Zombie_5
       rect:
         serializedVersion: 2
-        x: 256
-        y: 6
+        x: 6
+        y: 118
         width: 40
         height: 39
       alignment: 0
@@ -121,9 +121,9 @@ TextureImporter:
     - name: Zombie_6
       rect:
         serializedVersion: 2
-        x: 302
-        y: 5
-        width: 40
+        x: 7
+        y: 72
+        width: 39
         height: 40
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -131,10 +131,10 @@ TextureImporter:
     - name: Zombie_7
       rect:
         serializedVersion: 2
-        x: 347
-        y: 5
-        width: 40
-        height: 39
+        x: 8
+        y: 23
+        width: 38
+        height: 41
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
